@@ -26,11 +26,15 @@ export interface Item {
 }
 
 export interface updateCompletionStatus {
-  (id: number, isChecked: boolean) : void;
+  (id: number, isChecked: boolean): void;
 }
 
 export interface updateItem {
-  (id: number, patchBody: PatchBody) : void;
+  (id: number, patchBody: PatchBody): void;
+}
+
+export interface deleteItem {
+  (id: number): void;
 }
 
 // component props
@@ -38,6 +42,7 @@ export interface OverviewTodosProps {
   todoList: Item[];
   updateCompletionStatus: updateCompletionStatus;
   updateItem: updateItem;
+  deleteItem: deleteItem;
 }
 
 export interface AddNewToDoProps {
@@ -57,4 +62,5 @@ export interface ToDoItemProps {
   item: Item;
   updateCompletionStatus: updateCompletionStatus;
   updateItem: updateItem;
+  deleteItem: deleteItem;
 }

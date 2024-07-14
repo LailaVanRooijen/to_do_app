@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import { ToDoItemProps } from './Interfaces';
 import { MdOutlineExpandCircleDown } from 'react-icons/md';
+import { RiDeleteBinLine } from 'react-icons/ri';
 
 const TodoItem = ({
   item,
   updateCompletionStatus,
   updateItem,
+  deleteItem,
 }: ToDoItemProps) => {
   const [content, setContent] = useState<string>(item.content);
   return (
-    <li
-      key={item.id}
-      className="flex flex-col border-2 bg-tertiary m-4 p-2 text-white shadow-md shadow-secondary rounded-sm"
-    >
+    <li className="flex flex-col border-2 bg-tertiary m-4 p-2 text-white shadow-md shadow-secondary rounded-sm">
       <div id="top" className="flex flex-row p-2">
         <span className="mr-2">Done</span>
         <input
@@ -28,7 +27,7 @@ const TodoItem = ({
           {item.title}
         </h6>
         <MdOutlineExpandCircleDown
-          className="cursor-pointer"
+          className="cursor-pointer text-secondary mr-6"
           onClick={() => {
             if (
               document
@@ -43,6 +42,12 @@ const TodoItem = ({
                 .getElementById(`bottom_${item.id}`)
                 ?.classList.add('hidden');
             }
+          }}
+        />
+        <RiDeleteBinLine
+          className={'mx-2 cursor-pointer text-primary'}
+          onClick={() => {
+            deleteItem(item.id);
           }}
         />
       </div>

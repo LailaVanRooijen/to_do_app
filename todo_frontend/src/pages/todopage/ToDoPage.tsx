@@ -70,6 +70,19 @@ const ToDoPage = () => {
       });
   };
 
+  const deleteItem = (id: number) => {
+    fetch(`http://localhost:8080/api/v1/todos/${id}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then(() => {
+        setRefresh(!refresh);
+      })
+      .catch((error) => {
+        console.error('Something went wrong: ', error);
+      });
+  };
+
   const updateCompletionStatus = (id: number, isChecked: boolean) => {
     patchTodo(id, { isCompleted: isChecked });
   };
@@ -93,6 +106,7 @@ const ToDoPage = () => {
         todoList={todoList}
         updateCompletionStatus={updateCompletionStatus}
         updateItem={patchTodo}
+        deleteItem={deleteItem}
       />
     </div>
   );
