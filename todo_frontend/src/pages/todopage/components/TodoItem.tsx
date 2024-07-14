@@ -27,7 +27,7 @@ const TodoItem = ({
           {item.title}
         </h6>
         <MdOutlineExpandCircleDown
-          className="cursor-pointer text-secondary mr-6"
+          className="cursor-pointer text-primary mr-6 w-8"
           onClick={() => {
             if (
               document
@@ -44,12 +44,14 @@ const TodoItem = ({
             }
           }}
         />
-        <RiDeleteBinLine
-          className={'mx-2 cursor-pointer text-primary'}
-          onClick={() => {
-            deleteItem(item.id);
-          }}
-        />
+        <div className="border-l-2 border-secondary px-2">
+          <RiDeleteBinLine
+            className={'mx-2 cursor-pointer text-primary w-6'}
+            onClick={() => {
+              deleteItem(item.id);
+            }}
+          />
+        </div>
       </div>
       <div
         id={`bottom_${item.id}`}
