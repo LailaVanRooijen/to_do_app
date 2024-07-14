@@ -57,7 +57,7 @@ const TodoItem = ({
       >
         <input
           type="text"
-          className="bg-tertiary w-full"
+          className="bg-tertiary w-full focus:outline-none"
           value={content}
           onChange={(e) => {
             setContent(e.target.value);
