@@ -3,6 +3,7 @@ import AddNewToDo from './components/AddNewToDo';
 import OverviewTodos from './components/OverviewTodos';
 import SortTodos from './components/SortTodos';
 import CompletedFilter from './components/CompletedFilter';
+import { Postdata, PatchBody, Params, Item } from './components/Interfaces';
 
 const ToDoPage = () => {
   const [todoList, setTodoList] = useState<Item[]>([]);
@@ -91,37 +92,10 @@ const ToDoPage = () => {
       <OverviewTodos
         todoList={todoList}
         updateCompletionStatus={updateCompletionStatus}
+        updateItem={patchTodo}
       />
     </div>
   );
 };
-
-// interfaces
-interface Postdata {
-  title: string;
-  content: string;
-}
-
-interface PatchBody {
-  title?: string;
-  content?: string;
-  isCompleted?: boolean;
-}
-
-interface Params {
-  title?: string;
-  date?: string;
-  sortBy?: string;
-  showCompleted: boolean;
-  [key: string]: string | boolean | undefined;
-}
-
-interface Item {
-  id: number;
-  title: string;
-  content: string;
-  isCompleted: boolean;
-  createdOn: string;
-}
 
 export default ToDoPage;

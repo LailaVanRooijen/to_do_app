@@ -1,4 +1,6 @@
-const SortTodos = ({ updateFilter }: Props) => {
+import { SortToDosProps } from './Interfaces';
+
+const SortTodos = ({ updateFilter }: SortToDosProps) => {
   return (
     <>
       <select
@@ -16,10 +18,5 @@ const SortTodos = ({ updateFilter }: Props) => {
     </>
   );
 };
-
-//interfaces
-interface Props {
-  updateFilter: (filtername: string, sortBy: string) => void;
-}
 
 export default SortTodos;

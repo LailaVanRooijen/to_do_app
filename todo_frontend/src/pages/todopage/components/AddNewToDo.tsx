@@ -1,6 +1,7 @@
+import { AddNewToDoProps } from './Interfaces';
 import { useState } from 'react';
 
-const AddNewToDo: React.FC<Props> = ({ postToDoItem }) => {
+const AddNewToDo: React.FC<AddNewToDoProps> = ({ postToDoItem }) => {
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
 
@@ -48,15 +49,5 @@ const AddNewToDo: React.FC<Props> = ({ postToDoItem }) => {
     </div>
   );
 };
-
-// interfaces
-interface Postdata {
-  title: string;
-  content: string;
-}
-
-interface Props {
-  postToDoItem: (Postdata: Postdata) => void;
-}
 
 export default AddNewToDo;

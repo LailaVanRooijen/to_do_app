@@ -1,4 +1,9 @@
-const CompletedFilter = ({ updateFilter, showCompleted }: Props) => {
+import { CompletedFilterProps } from './Interfaces';
+
+const CompletedFilter = ({
+  updateFilter,
+  showCompleted,
+}: CompletedFilterProps) => {
   return (
     <div className="w-1/12 flex justify-center border-2 p-2 ml-4 border-tertiary">
       <label htmlFor="show_completed" className="text-sm mr-2">
@@ -16,11 +21,5 @@ const CompletedFilter = ({ updateFilter, showCompleted }: Props) => {
     </div>
   );
 };
-
-//interfaces
-interface Props {
-  updateFilter: (filtername: string, showCompleted: boolean) => void;
-  showCompleted: boolean;
-}
 
 export default CompletedFilter;

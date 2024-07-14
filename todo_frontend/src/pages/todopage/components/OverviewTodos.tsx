@@ -1,6 +1,11 @@
 import { MdOutlineExpandCircleDown } from 'react-icons/md';
+import { OverviewTodosProps, Item } from './Interfaces';
 
-const OverviewTodos = ({ todoList, updateCompletionStatus }: Props) => {
+const OverviewTodos = ({
+  todoList,
+  updateCompletionStatus,
+  updateItem,
+}: OverviewTodosProps) => {
   return (
     <ul>
       {todoList &&
@@ -28,6 +33,7 @@ const OverviewTodos = ({ todoList, updateCompletionStatus }: Props) => {
                 {item.title}
               </h6>
               <MdOutlineExpandCircleDown
+                className="cursor-pointer"
                 onClick={() => {
                   if (
                     document
@@ -48,6 +54,9 @@ const OverviewTodos = ({ todoList, updateCompletionStatus }: Props) => {
             <div
               id={`bottom_${item.id}`}
               className="border-t-2 border-dotted hidden min-h-20 p-2"
+              onClick={() => {
+                updateItem(item.id, { content: 'new content' });
+              }}
             >
               {item.content}
             </div>
@@ -56,19 +65,5 @@ const OverviewTodos = ({ todoList, updateCompletionStatus }: Props) => {
     </ul>
   );
 };
-
-//interfaces
-interface Item {
-  id: number;
-  title: string;
-  content: string;
-  isCompleted: boolean;
-  createdOn: string;
-}
-
-interface Props {
-  todoList: Item[];
-  updateCompletionStatus: ( id: number, isChecked: boolean ) => void;
-}
 
 export default OverviewTodos;
