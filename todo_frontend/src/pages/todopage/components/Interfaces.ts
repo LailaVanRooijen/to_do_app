@@ -25,11 +25,19 @@ export interface Item {
   createdOn: string;
 }
 
+export interface updateCompletionStatus {
+  (id: number, isChecked: boolean) : void;
+}
+
+export interface updateItem {
+  (id: number, patchBody: PatchBody) : void;
+}
+
 // component props
 export interface OverviewTodosProps {
   todoList: Item[];
-  updateCompletionStatus: (id: number, isChecked: boolean) => void;
-  updateItem: (id: number, patchBody: PatchBody) => void;
+  updateCompletionStatus: updateCompletionStatus;
+  updateItem: updateItem;
 }
 
 export interface AddNewToDoProps {
@@ -43,4 +51,10 @@ export interface SortToDosProps {
 export interface CompletedFilterProps {
   updateFilter: (filtername: string, showCompleted: boolean) => void;
   showCompleted: boolean;
+}
+
+export interface ToDoItemProps {
+  item: Item;
+  updateCompletionStatus: updateCompletionStatus;
+  updateItem: updateItem;
 }
